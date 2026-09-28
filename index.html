@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!-- Ny'Asia Dixon | September 27, 2026 -->
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Using jQuery Selectors and Events</title>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        #click-result,
+        #hover-message {
+            padding: 10px;
+        }
+
+        #double-click {
+            padding: 15px;
+            background-color: #eeeeee;
+            cursor: pointer;
+        }
+
+        dt {
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        dd {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Using jQuery Selectors and Events</h1>
+
+    <h2>jQuery Events</h2>
+
+    <!-- Click event -->
+    <button id="click-button">Click Me</button>
+    <p id="click-result">Click the button to change this text.</p>
+
+    <!-- Double-click event -->
+    <p id="double-click">Double-click this paragraph to change its style.</p>
+
+    <!-- Hover event -->
+    <p id="hover-message">Hover over this paragraph to change its appearance.</p>
+
+    <h2>jQuery Selectors Used</h2>
+
+    <dl>
+
+        <dt>#click-button</dt>
+        <dd>
+            The ID selector selects the element with the ID "click-button."
+            It is used here to add a click event to the button.
+        </dd>
+
+        <dt>#double-click</dt>
+        <dd>
+            The ID selector selects the paragraph with the ID "double-click."
+            It is used here to add a double-click event.
+        </dd>
+
+        <dt>#hover-message</dt>
+        <dd>
+            The ID selector selects the paragraph with the ID "hover-message."
+            It is used here to add a hover event.
+        </dd>
+
+    </dl>
+
+    <script>
+        $(document).ready(function() {
+
+            // Click event
+            $("#click-button").click(function() {
+                $("#click-result").text("You clicked the button!");
+            });
+
+            // Double-click event
+            $("#double-click").dblclick(function() {
+                $(this).css({
+                    "background-color": "lightblue",
+                    "font-weight": "bold"
+                });
+                $(this).text("You double-clicked me!");
+            });
+
+            // Hover event
+            $("#hover-message").hover(
+                function() {
+                    $(this).css("color", "purple");
+                    $(this).text("You are hovering over me!");
+                },
+                function() {
+                    $(this).css("color", "black");
+                    $(this).text("Hover over this paragraph to change its appearance.");
+                }
+            );
+
+        });
+    </script>
+
+</body>
+
+</html>
